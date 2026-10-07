@@ -98,12 +98,8 @@
         }
 
         /* Skewed Metallic Buttons and Tabs */
-        .skew-rl {
-            transform: skewX(-15deg);
-        }
-        .unskew-rl {
-            transform: skewX(15deg);
-        }
+        .skew-rl { transform: skewX(-15deg); }
+        .unskew-rl { transform: skewX(15deg); }
 
         /* Glow effects */
         .glow-blue-text { text-shadow: 0 0 12px var(--rl-blue), 0 0 24px var(--rl-blue); }
@@ -158,6 +154,82 @@
         ::-webkit-scrollbar-track { background: #030712; }
         ::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 4px; }
         ::-webkit-scrollbar-thumb:hover { background: #00f0ff; }
+
+
+        /* ==================== WORLD CUP HQ ADD-ON ==================== */
+        #view-worldcup .wc-shell,
+        #view-bracket .wc-bracket-shell {
+            background: linear-gradient(145deg, rgba(4, 10, 24, .93), rgba(9, 17, 35, .84));
+            border: 1px solid rgba(0, 240, 255, .22);
+            box-shadow: 0 24px 70px rgba(0,0,0,.55), inset 0 1px 0 rgba(255,255,255,.05);
+        }
+        #view-bracket .glass-panel { padding: clamp(.75rem, 2vw, 2rem); overflow: hidden; }
+        /* The complete 4-stage bracket is kept inside the viewport — no left/right scrolling. */
+        #view-bracket > div > .flex.items-stretch {
+            min-width: 0 !important; width: 100% !important; gap: clamp(.35rem, 1.2vw, 1.25rem) !important;
+            align-items: stretch;
+        }
+        #view-bracket > div > .flex.items-stretch > div {
+            width: auto !important; flex: 1 1 0 !important; min-width: 0 !important;
+        }
+        #view-bracket > div > .flex.items-stretch > div:last-child { flex: .78 1 0 !important; }
+        #view-bracket .bg-slate-950\/90 { padding: clamp(.45rem, 1vw, .85rem) !important; }
+        #view-bracket select, #view-bracket input[type="number"] { min-width: 0; }
+        #view-bracket input[type="number"] { max-width: 3.5rem; min-height: 2.2rem; font-size: .9rem; }
+        @media (max-width: 1100px) {
+            #view-bracket > div > .flex.items-stretch { gap: .35rem !important; }
+            #view-bracket .font-orbitron { letter-spacing: .02em; }
+            #view-bracket .truncate { max-width: 90px !important; }
+            #view-bracket input[type="number"] { width: 2.2rem !important; }
+        }
+        @media (max-width: 780px) {
+            #view-bracket > div > .flex.items-stretch { transform: scale(.94); transform-origin: top center; width: 106.4% !important; margin-left: -3.2%; }
+            #view-bracket .space-y-8 > div, #view-bracket .space-y-4 > div { margin-top: .35rem !important; }
+        }
+        .wc-photo-btn { cursor:pointer; }
+        .wc-photo-preview { width: 42px; height:42px; object-fit:cover; border-radius:10px; border:1px solid rgba(255,255,255,.16); background:#020617; }
+        .wc-ot-banner { animation: wcOtIn .18s ease-out; }
+        @keyframes wcOtIn { from { opacity:0; transform:scale(.9); } to { opacity:1; transform:scale(1); } }
+        .wc-control-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:.5rem; }
+        .wc-custom-badge { background:linear-gradient(90deg,rgba(168,85,247,.22),rgba(14,165,233,.18)); border:1px solid rgba(168,85,247,.3); }
+        .wc-ribbon {
+            position: relative;
+            background: linear-gradient(90deg, #07101f 0%, #d8a126 11%, #ffdc78 29%, #fff1b0 48%, #ffc86f 70%, #db922c 89%, #07101f 100%);
+            clip-path: polygon(0 14%, 3% 0, 45% 0, 47% 18%, 53% 18%, 55% 0, 97% 0, 100% 14%, 100% 86%, 97% 100%, 55% 100%, 53% 82%, 47% 82%, 45% 100%, 3% 100%, 0 86%);
+            box-shadow: 0 12px 30px rgba(0,0,0,.45);
+        }
+        .wc-ribbon::before {
+            content: ""; position: absolute; inset: 3px;
+            clip-path: inherit; pointer-events: none;
+            border: 1px solid rgba(255,255,255,.34);
+        }
+        .wc-team-plate { color:#090b10; text-shadow: 0 1px 0 rgba(255,255,255,.25); }
+        .wc-vs-badge {
+            background: #02050b; color:white; border: 2px solid #0d1118;
+            transform: skewX(-10deg); box-shadow: 0 0 0 2px rgba(255,255,255,.06), 0 10px 28px rgba(0,0,0,.6);
+        }
+        .wc-vs-badge > * { transform: skewX(10deg); }
+        .wc-series-pip {
+            width: 14px; height: 28px; border-radius: 4px;
+            border: 2px solid rgba(8,10,15,.85); background: rgba(8,10,15,.42);
+            box-shadow: inset 0 0 0 1px rgba(255,255,255,.16);
+        }
+        .wc-series-pip.on { background: #0a0d12; box-shadow: 0 0 12px rgba(255,255,255,.55), inset 0 0 0 1px rgba(255,255,255,.7); }
+        .wc-match-card {
+            background: linear-gradient(145deg, rgba(5,12,25,.92), rgba(11,19,36,.86));
+            border: 1px solid rgba(148,163,184,.17);
+            box-shadow: 0 14px 36px rgba(0,0,0,.35);
+        }
+        .wc-match-card:hover { border-color: rgba(0,240,255,.35); transform: translateY(-2px); }
+        .wc-timer-digits { font-variant-numeric: tabular-nums; letter-spacing: .08em; text-shadow: 0 0 18px rgba(255,183,0,.65); }
+        .wc-chip { background: rgba(2,6,15,.82); border: 1px solid rgba(255,255,255,.09); }
+        .wc-divider { height:1px; background:linear-gradient(90deg,transparent,rgba(0,240,255,.45),rgba(255,183,0,.45),transparent); }
+        .wc-export-card { background: #050b16; }
+        @media (max-width: 900px) {
+            .wc-ribbon { clip-path: none; border-radius: 16px; }
+            .wc-ribbon::before { display:none; }
+        }
+
     </style>
 </head>
 <body class="relative min-h-screen flex flex-col justify-between">
@@ -195,6 +267,9 @@
                 </button>
                 <button onclick="switchTab('bracket')" id="tab-btn-bracket" class="tab-btn skew-rl px-3 py-1.5 rounded text-xs md:text-sm font-orbitron font-bold tracking-wider text-slate-300 hover:text-white transition-all">
                     <span class="unskew-rl inline-block"><i class="fa-solid fa-sitemap text-purple-400 mr-1.5"></i>WORLD CUP BRACKETS</span>
+                </button>
+                <button onclick="switchTab('worldcup')" id="tab-btn-worldcup" class="tab-btn skew-rl px-3 py-1.5 rounded text-xs md:text-sm font-orbitron font-bold tracking-wider text-slate-300 hover:text-white transition-all">
+                    <span class="unskew-rl inline-block"><i class="fa-solid fa-earth-africa text-yellow-400 mr-1.5"></i>WORLD CUP HQ</span>
                 </button>
             </nav>
 
@@ -474,14 +549,14 @@
                         <h2 class="font-orbitron font-extrabold text-2xl text-white tracking-wider uppercase flex items-center gap-2">
                             <i class="fa-solid fa-trophy text-yellow-400"></i> RLCS LEAGUE STANDINGS
                         </h2>
-                        <p class="text-xs text-slate-400">Official esports ranking table sorted by points and goal differentials.</p>
+                        <p class="text-xs text-slate-400">Official esports ranking table. Manually override or adjust any team stats below.</p>
                     </div>
                     <button onclick="resetStandingsData()" class="px-3.5 py-2 bg-slate-900 hover:bg-red-950/60 text-red-400 border border-red-800/40 text-xs font-bold rounded-lg transition">
                         <i class="fa-solid fa-rotate-left mr-1"></i> RESET LEAGUE DATA
                     </button>
                 </div>
 
-                <!-- 2-Column Split Grid Layout for Broadcast Standings (#1-6 left, #7-12 right) -->
+                <!-- Split Grid Layout for Interactive Standings -->
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
                     
                     <!-- LEFT COLUMN (Ranks 1 to 6) -->
@@ -489,13 +564,14 @@
                         <table class="w-full text-left border-collapse">
                             <thead>
                                 <tr class="border-b border-slate-800 font-orbitron text-[11px] text-cyan-400 uppercase">
-                                    <th class="p-2.5">RANK</th>
-                                    <th class="p-2.5">TEAM</th>
-                                    <th class="p-2.5 text-center">MP</th>
-                                    <th class="p-2.5 text-center">W</th>
-                                    <th class="p-2.5 text-center">L</th>
-                                    <th class="p-2.5 text-center">GD</th>
-                                    <th class="p-2.5 text-right">PTS</th>
+                                    <th class="p-2">RANK</th>
+                                    <th class="p-2">TEAM</th>
+                                    <th class="p-2 text-center">MP</th>
+                                    <th class="p-2 text-center">W</th>
+                                    <th class="p-2 text-center">L</th>
+                                    <th class="p-2 text-center">GF</th>
+                                    <th class="p-2 text-center">GA</th>
+                                    <th class="p-2 text-center">PTS</th>
                                 </tr>
                             </thead>
                             <tbody id="standings-left-body" class="divide-y divide-slate-800/60 font-semibold text-xs">
@@ -509,13 +585,14 @@
                         <table class="w-full text-left border-collapse">
                             <thead>
                                 <tr class="border-b border-slate-800 font-orbitron text-[11px] text-cyan-400 uppercase">
-                                    <th class="p-2.5">RANK</th>
-                                    <th class="p-2.5">TEAM</th>
-                                    <th class="p-2.5 text-center">MP</th>
-                                    <th class="p-2.5 text-center">W</th>
-                                    <th class="p-2.5 text-center">L</th>
-                                    <th class="p-2.5 text-center">GD</th>
-                                    <th class="p-2.5 text-right">PTS</th>
+                                    <th class="p-2">RANK</th>
+                                    <th class="p-2">TEAM</th>
+                                    <th class="p-2 text-center">MP</th>
+                                    <th class="p-2 text-center">W</th>
+                                    <th class="p-2 text-center">L</th>
+                                    <th class="p-2 text-center">GF</th>
+                                    <th class="p-2 text-center">GA</th>
+                                    <th class="p-2 text-center">PTS</th>
                                 </tr>
                             </thead>
                             <tbody id="standings-right-body" class="divide-y divide-slate-800/60 font-semibold text-xs">
@@ -530,13 +607,13 @@
 
         <!-- ==================== TAB 4: FIFA WORLD CUP TOURNAMENT BRACKET ==================== -->
         <section id="view-bracket" class="tab-view hidden space-y-6">
-            <div class="glass-panel p-6 rounded-2xl border border-slate-800 overflow-x-auto">
+            <div class="glass-panel wc-bracket-shell p-6 rounded-2xl border border-slate-800 overflow-x-auto">
                 <div class="flex flex-wrap items-center justify-between gap-4 mb-6">
                     <div>
                         <h2 class="font-orbitron font-extrabold text-2xl text-white tracking-wider uppercase flex items-center gap-2">
                             <i class="fa-solid fa-sitemap text-purple-400"></i> FIFA WORLD CUP BRACKET SYSTEM
                         </h2>
-                        <p class="text-xs text-slate-400">Select any match opponents, enter score outcomes, and automatically advance winners to Grand Finals!</p>
+                        <p class="text-xs text-slate-400">Best-of-7 World Cup series: the first team to 4 game wins advances automatically through the bracket!</p>
                     </div>
                     <button onclick="resetBracketData()" class="px-3 py-1.5 bg-slate-900 hover:bg-purple-950/60 text-purple-300 border border-purple-800/40 text-xs font-bold rounded-lg transition">
                         <i class="fa-solid fa-arrow-rotate-left mr-1"></i> RESET BRACKETS
@@ -553,11 +630,11 @@
                         <div class="bg-slate-950/90 border border-slate-800 rounded-xl p-3 space-y-2 shadow-lg">
                             <div class="flex items-center gap-2">
                                 <select id="qf1-t1" onchange="updateBracketTeam('qf1_1', this.value)" class="bg-slate-900 border border-slate-700 text-xs text-cyan-300 font-bold rounded px-1.5 py-1 w-full"></select>
-                                <input id="qf1-s1" type="number" min="0" value="0" onchange="evaluateBracketMatch('qf1')" class="w-10 text-center bg-slate-950 border border-slate-700 rounded text-xs font-bold text-white">
+                                <input id="qf1-s1" type="number" min="0" max="4" value="0" onchange="evaluateBracketMatch('qf1')" class="w-10 text-center bg-slate-950 border border-slate-700 rounded text-xs font-bold text-white">
                             </div>
                             <div class="flex items-center gap-2">
                                 <select id="qf1-t2" onchange="updateBracketTeam('qf1_2', this.value)" class="bg-slate-900 border border-slate-700 text-xs text-orange-300 font-bold rounded px-1.5 py-1 w-full"></select>
-                                <input id="qf1-s2" type="number" min="0" value="0" onchange="evaluateBracketMatch('qf1')" class="w-10 text-center bg-slate-950 border border-slate-700 rounded text-xs font-bold text-white">
+                                <input id="qf1-s2" type="number" min="0" max="4" value="0" onchange="evaluateBracketMatch('qf1')" class="w-10 text-center bg-slate-950 border border-slate-700 rounded text-xs font-bold text-white">
                             </div>
                         </div>
 
@@ -565,11 +642,11 @@
                         <div class="bg-slate-950/90 border border-slate-800 rounded-xl p-3 space-y-2 shadow-lg">
                             <div class="flex items-center gap-2">
                                 <select id="qf2-t1" onchange="updateBracketTeam('qf2_1', this.value)" class="bg-slate-900 border border-slate-700 text-xs text-cyan-300 font-bold rounded px-1.5 py-1 w-full"></select>
-                                <input id="qf2-s1" type="number" min="0" value="0" onchange="evaluateBracketMatch('qf2')" class="w-10 text-center bg-slate-950 border border-slate-700 rounded text-xs font-bold text-white">
+                                <input id="qf2-s1" type="number" min="0" max="4" value="0" onchange="evaluateBracketMatch('qf2')" class="w-10 text-center bg-slate-950 border border-slate-700 rounded text-xs font-bold text-white">
                             </div>
                             <div class="flex items-center gap-2">
                                 <select id="qf2-t2" onchange="updateBracketTeam('qf2_2', this.value)" class="bg-slate-900 border border-slate-700 text-xs text-orange-300 font-bold rounded px-1.5 py-1 w-full"></select>
-                                <input id="qf2-s2" type="number" min="0" value="0" onchange="evaluateBracketMatch('qf2')" class="w-10 text-center bg-slate-950 border border-slate-700 rounded text-xs font-bold text-white">
+                                <input id="qf2-s2" type="number" min="0" max="4" value="0" onchange="evaluateBracketMatch('qf2')" class="w-10 text-center bg-slate-950 border border-slate-700 rounded text-xs font-bold text-white">
                             </div>
                         </div>
 
@@ -577,11 +654,11 @@
                         <div class="bg-slate-950/90 border border-slate-800 rounded-xl p-3 space-y-2 shadow-lg">
                             <div class="flex items-center gap-2">
                                 <select id="qf3-t1" onchange="updateBracketTeam('qf3_1', this.value)" class="bg-slate-900 border border-slate-700 text-xs text-cyan-300 font-bold rounded px-1.5 py-1 w-full"></select>
-                                <input id="qf3-s1" type="number" min="0" value="0" onchange="evaluateBracketMatch('qf3')" class="w-10 text-center bg-slate-950 border border-slate-700 rounded text-xs font-bold text-white">
+                                <input id="qf3-s1" type="number" min="0" max="4" value="0" onchange="evaluateBracketMatch('qf3')" class="w-10 text-center bg-slate-950 border border-slate-700 rounded text-xs font-bold text-white">
                             </div>
                             <div class="flex items-center gap-2">
                                 <select id="qf3-t2" onchange="updateBracketTeam('qf3_2', this.value)" class="bg-slate-900 border border-slate-700 text-xs text-orange-300 font-bold rounded px-1.5 py-1 w-full"></select>
-                                <input id="qf3-s2" type="number" min="0" value="0" onchange="evaluateBracketMatch('qf3')" class="w-10 text-center bg-slate-950 border border-slate-700 rounded text-xs font-bold text-white">
+                                <input id="qf3-s2" type="number" min="0" max="4" value="0" onchange="evaluateBracketMatch('qf3')" class="w-10 text-center bg-slate-950 border border-slate-700 rounded text-xs font-bold text-white">
                             </div>
                         </div>
 
@@ -589,11 +666,11 @@
                         <div class="bg-slate-950/90 border border-slate-800 rounded-xl p-3 space-y-2 shadow-lg">
                             <div class="flex items-center gap-2">
                                 <select id="qf4-t1" onchange="updateBracketTeam('qf4_1', this.value)" class="bg-slate-900 border border-slate-700 text-xs text-cyan-300 font-bold rounded px-1.5 py-1 w-full"></select>
-                                <input id="qf4-s1" type="number" min="0" value="0" onchange="evaluateBracketMatch('qf4')" class="w-10 text-center bg-slate-950 border border-slate-700 rounded text-xs font-bold text-white">
+                                <input id="qf4-s1" type="number" min="0" max="4" value="0" onchange="evaluateBracketMatch('qf4')" class="w-10 text-center bg-slate-950 border border-slate-700 rounded text-xs font-bold text-white">
                             </div>
                             <div class="flex items-center gap-2">
                                 <select id="qf4-t2" onchange="updateBracketTeam('qf4_2', this.value)" class="bg-slate-900 border border-slate-700 text-xs text-orange-300 font-bold rounded px-1.5 py-1 w-full"></select>
-                                <input id="qf4-s2" type="number" min="0" value="0" onchange="evaluateBracketMatch('qf4')" class="w-10 text-center bg-slate-950 border border-slate-700 rounded text-xs font-bold text-white">
+                                <input id="qf4-s2" type="number" min="0" max="4" value="0" onchange="evaluateBracketMatch('qf4')" class="w-10 text-center bg-slate-950 border border-slate-700 rounded text-xs font-bold text-white">
                             </div>
                         </div>
 
@@ -606,24 +683,24 @@
                         <!-- SF 1 -->
                         <div class="bg-slate-950/90 border border-purple-500/30 rounded-xl p-3 space-y-2 shadow-xl">
                             <div class="flex items-center justify-between text-xs font-bold text-cyan-300">
-                                <span id="sf1-t1-name" class="truncate max-w-[140px]">WINNER QF1</span>
-                                <input id="sf1-s1" type="number" min="0" value="0" onchange="evaluateBracketMatch('sf1')" class="w-10 text-center bg-slate-950 border border-slate-700 rounded text-xs font-bold text-white">
+                                <span id="sf1-t1-name" class="truncate max-w-[140px]">QF1 LEADER</span>
+                                <input id="sf1-s1" type="number" min="0" max="4" value="0" onchange="evaluateBracketMatch('sf1')" class="w-10 text-center bg-slate-950 border border-slate-700 rounded text-xs font-bold text-white">
                             </div>
                             <div class="flex items-center justify-between text-xs font-bold text-orange-300">
-                                <span id="sf1-t2-name" class="truncate max-w-[140px]">WINNER QF2</span>
-                                <input id="sf1-s2" type="number" min="0" value="0" onchange="evaluateBracketMatch('sf1')" class="w-10 text-center bg-slate-950 border border-slate-700 rounded text-xs font-bold text-white">
+                                <span id="sf1-t2-name" class="truncate max-w-[140px]">QF2 LEADER</span>
+                                <input id="sf1-s2" type="number" min="0" max="4" value="0" onchange="evaluateBracketMatch('sf1')" class="w-10 text-center bg-slate-950 border border-slate-700 rounded text-xs font-bold text-white">
                             </div>
                         </div>
 
                         <!-- SF 2 -->
                         <div class="bg-slate-950/90 border border-purple-500/30 rounded-xl p-3 space-y-2 shadow-xl">
                             <div class="flex items-center justify-between text-xs font-bold text-cyan-300">
-                                <span id="sf2-t1-name" class="truncate max-w-[140px]">WINNER QF3</span>
-                                <input id="sf2-s1" type="number" min="0" value="0" onchange="evaluateBracketMatch('sf2')" class="w-10 text-center bg-slate-950 border border-slate-700 rounded text-xs font-bold text-white">
+                                <span id="sf2-t1-name" class="truncate max-w-[140px]">QF3 LEADER</span>
+                                <input id="sf2-s1" type="number" min="0" max="4" value="0" onchange="evaluateBracketMatch('sf2')" class="w-10 text-center bg-slate-950 border border-slate-700 rounded text-xs font-bold text-white">
                             </div>
                             <div class="flex items-center justify-between text-xs font-bold text-orange-300">
-                                <span id="sf2-t2-name" class="truncate max-w-[140px]">WINNER QF4</span>
-                                <input id="sf2-s2" type="number" min="0" value="0" onchange="evaluateBracketMatch('sf2')" class="w-10 text-center bg-slate-950 border border-slate-700 rounded text-xs font-bold text-white">
+                                <span id="sf2-t2-name" class="truncate max-w-[140px]">QF4 LEADER</span>
+                                <input id="sf2-s2" type="number" min="0" max="4" value="0" onchange="evaluateBracketMatch('sf2')" class="w-10 text-center bg-slate-950 border border-slate-700 rounded text-xs font-bold text-white">
                             </div>
                         </div>
                     </div>
@@ -634,12 +711,16 @@
                         
                         <div class="bg-slate-950/90 border-2 border-yellow-500/50 rounded-xl p-4 space-y-3 shadow-2xl shadow-yellow-500/10">
                             <div class="flex items-center justify-between text-sm font-bold text-cyan-300">
-                                <span id="gf-t1-name" class="truncate max-w-[140px]">FINALIST 1</span>
-                                <input id="gf-s1" type="number" min="0" value="0" onchange="evaluateBracketMatch('gf')" class="w-12 text-center bg-slate-950 border border-yellow-500/40 rounded text-sm font-bold text-yellow-300">
+                                <span id="gf-t1-name" class="truncate max-w-[140px]">TBD</span>
+                                <input id="gf-s1" type="number" min="0" max="4" value="0" onchange="evaluateBracketMatch('gf')" class="w-12 text-center bg-slate-950 border border-yellow-500/40 rounded text-sm font-bold text-yellow-300">
                             </div>
                             <div class="flex items-center justify-between text-sm font-bold text-orange-300">
-                                <span id="gf-t2-name" class="truncate max-w-[140px]">FINALIST 2</span>
-                                <input id="gf-s2" type="number" min="0" value="0" onchange="evaluateBracketMatch('gf')" class="w-12 text-center bg-slate-950 border border-yellow-500/40 rounded text-sm font-bold text-yellow-300">
+                                <span id="gf-t2-name" class="truncate max-w-[140px]">TBD</span>
+                                <input id="gf-s2" type="number" min="0" max="4" value="0" onchange="evaluateBracketMatch('gf')" class="w-12 text-center bg-slate-950 border border-yellow-500/40 rounded text-sm font-bold text-yellow-300">
+                            </div>
+                            <div class="mt-1 pt-2 border-t border-yellow-500/20 text-center">
+                                <div class="text-[9px] font-orbitron font-black tracking-[.2em] text-yellow-400 uppercase">GRAND FINAL LEADER</div>
+                                <div id="gf-leader-name" class="font-orbitron font-black text-lg text-white uppercase tracking-wider mt-1">TBD</div>
                             </div>
                         </div>
                     </div>
@@ -651,6 +732,115 @@
                         <h3 id="crowned-champion-name" class="font-orbitron font-black text-2xl text-white tracking-wider uppercase mt-1">TBD</h3>
                     </div>
 
+                </div>
+            </div>
+        </section>
+
+
+
+        <!-- ==================== TAB 5: WORLD CUP HQ / MATCH ORGANIZER ==================== -->
+        <section id="view-worldcup" class="tab-view hidden space-y-6">
+            <div class="wc-shell rounded-3xl p-5 md:p-7 overflow-hidden relative">
+                <div class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-cyan-400 to-transparent opacity-70"></div>
+                <div class="flex flex-wrap items-end justify-between gap-4 mb-5">
+                    <div>
+                        <div class="flex items-center gap-2 text-[10px] uppercase tracking-[.35em] text-yellow-300 font-orbitron font-bold mb-2">
+                            <i class="fa-solid fa-earth-africa"></i> FIFA WORLD CUP CONTROL CENTER
+                        </div>
+                        <h2 class="font-orbitron font-black text-3xl md:text-4xl text-white uppercase tracking-wider">Tournament Match Organizer</h2>
+                        <p class="text-sm text-slate-400 mt-2">Organize every Quarter-Final matchup, run a first-to-4 series, control a dedicated World Cup timer, and export the schedule as a shareable PNG.</p>
+                    </div>
+                    <div class="flex flex-wrap gap-2">
+                        <button onclick="saveWorldCupPlan()" class="px-4 py-2.5 rounded-xl bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-orbitron font-black text-xs uppercase tracking-wider shadow-lg shadow-cyan-500/20"><i class="fa-solid fa-floppy-disk mr-2"></i>Save Plan</button>
+                        <button onclick="exportWorldCupSchedulePNG()" class="px-4 py-2.5 rounded-xl bg-yellow-500 hover:bg-yellow-400 text-slate-950 font-orbitron font-black text-xs uppercase tracking-wider shadow-lg shadow-yellow-500/20"><i class="fa-solid fa-image mr-2"></i>Save Schedule PNG</button>
+                    </div>
+                </div>
+
+                <div class="wc-divider mb-6"></div>
+
+                <!-- RL / FIFA style series broadcast ribbon -->
+                <div id="wc-scoreboard-capture" class="wc-export-card rounded-2xl p-3 md:p-5 border border-white/10 mb-6">
+                    <div class="wc-ribbon min-h-[104px] grid grid-cols-[1fr_auto_1fr] items-center px-5 md:px-10 py-4 gap-3">
+                        <div class="grid grid-cols-[auto_1fr] items-center gap-3 md:gap-5 min-w-0">
+                            <div id="wc-left-logo-wrap" class="w-12 h-12 md:w-16 md:h-16 bg-slate-950 rounded-xl border-2 border-slate-900 flex items-center justify-center overflow-hidden shadow-xl">
+                                <img id="wc-left-logo" src="Logo_onlyNBG.png" class="w-full h-full object-contain p-1" alt="Left team logo">
+                            </div>
+                            <div class="min-w-0">
+                                <div id="wc-left-name" class="wc-team-plate font-orbitron font-black text-xl md:text-3xl truncate uppercase">TEAM 1</div>
+                                <div id="wc-left-pips" class="flex gap-1.5 mt-2"></div>
+                            </div>
+                        </div>
+
+                        <div class="flex flex-col items-center gap-1.5 px-1 md:px-5">
+                            <div class="wc-vs-badge px-5 md:px-7 py-2 rounded-xl"><span class="block font-orbitron font-black text-2xl md:text-3xl">VS</span></div>
+                            <div id="wc-timer-display" class="wc-timer-digits font-orbitron font-black text-xl md:text-2xl text-slate-950">05:00</div>
+                            <div id="wc-series-label" class="text-[8px] md:text-[10px] font-orbitron font-black text-slate-950/80 uppercase tracking-widest">Best of 7 • First to 4</div>
+                        </div>
+
+                        <div class="grid grid-cols-[1fr_auto] items-center gap-3 md:gap-5 min-w-0 text-right">
+                            <div class="min-w-0">
+                                <div id="wc-right-name" class="wc-team-plate font-orbitron font-black text-xl md:text-3xl truncate uppercase">TEAM 2</div>
+                                <div id="wc-right-pips" class="flex justify-end gap-1.5 mt-2"></div>
+                            </div>
+                            <div id="wc-right-logo-wrap" class="w-12 h-12 md:w-16 md:h-16 bg-slate-950 rounded-xl border-2 border-slate-900 flex items-center justify-center overflow-hidden shadow-xl">
+                                <img id="wc-right-logo" src="Logo_onlyNBG.png" class="w-full h-full object-contain p-1" alt="Right team logo">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 xl:grid-cols-12 gap-6">
+                    <!-- Dedicated World Cup timer / live series controller -->
+                    <div class="xl:col-span-4 wc-match-card rounded-2xl p-5 transition-all">
+                        <div class="flex items-center justify-between gap-3 mb-4">
+                            <div>
+                                <div class="font-orbitron font-black text-lg text-yellow-300 uppercase">World Cup Live Control</div>
+                                <div class="text-xs text-slate-500">Choose the match currently being played.</div>
+                            </div>
+                            <span class="wc-chip px-2.5 py-1 rounded-lg text-[10px] text-red-400 font-orbitron font-bold"><i class="fa-solid fa-circle text-[7px] mr-1 animate-pulse"></i>LIVE</span>
+                        </div>
+
+                        <label class="text-[10px] text-slate-400 font-bold uppercase tracking-wider">Broadcast Match</label>
+                        <select id="wc-live-match-select" onchange="selectWorldCupLiveMatch(this.value)" class="mt-1.5 w-full bg-slate-950 border border-slate-700 rounded-xl px-3 py-2.5 text-white font-bold focus:border-yellow-400 focus:outline-none"></select>
+
+                        <div class="grid grid-cols-2 gap-2 mt-4">
+                            <button onclick="adjustWorldCupSeries('left', 1)" class="py-3 rounded-xl bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-orbitron font-black text-xs uppercase">+ Left Win</button>
+                            <button onclick="adjustWorldCupSeries('right', 1)" class="py-3 rounded-xl bg-orange-500 hover:bg-orange-400 text-slate-950 font-orbitron font-black text-xs uppercase">+ Right Win</button>
+                            <button onclick="adjustWorldCupSeries('left', -1)" class="py-2 rounded-xl bg-slate-900 hover:bg-slate-800 border border-slate-700 text-cyan-300 font-bold text-xs">- LEFT</button>
+                            <button onclick="adjustWorldCupSeries('right', -1)" class="py-2 rounded-xl bg-slate-900 hover:bg-slate-800 border border-slate-700 text-orange-300 font-bold text-xs">- RIGHT</button>
+                        </div>
+
+                        <div class="mt-5 rounded-2xl bg-slate-950/70 border border-yellow-500/20 p-4 text-center">
+                            <div id="wc-big-timer" class="wc-timer-digits font-orbitron font-black text-5xl text-white">05:00</div>
+                            <div class="flex flex-wrap justify-center gap-2 mt-3">
+                                <button id="wc-timer-start-btn" onclick="toggleWorldCupTimer()" class="px-4 py-2 bg-emerald-500 hover:bg-emerald-400 rounded-lg text-slate-950 font-black text-xs"><i class="fa-solid fa-play mr-1"></i>START</button>
+                                <button onclick="resetWorldCupTimer()" class="px-4 py-2 bg-slate-800 hover:bg-slate-700 rounded-lg text-white font-black text-xs"><i class="fa-solid fa-rotate-left mr-1"></i>RESET</button>
+                                <button onclick="setWorldCupTimerPrompt()" class="px-4 py-2 bg-slate-800 hover:bg-slate-700 rounded-lg text-yellow-300 font-black text-xs"><i class="fa-solid fa-clock mr-1"></i>SET</button>
+                            </div>
+                            <div class="wc-control-grid mt-3">
+                                <button onclick="triggerWorldCupOvertime()" class="py-2.5 rounded-xl bg-red-600 hover:bg-red-500 text-white font-orbitron font-black text-[10px] uppercase tracking-wider"><i class="fa-solid fa-bolt mr-1"></i>TRIGGER OVERTIME</button>
+                                <button onclick="setWorldCupOvertimeLength()" class="py-2.5 rounded-xl bg-red-950/60 hover:bg-red-900 border border-red-500/30 text-red-200 font-black text-[10px] uppercase">SET OT LENGTH</button>
+                            </div>
+                            <div class="mt-3 flex items-center justify-between text-[10px] uppercase tracking-wider font-bold text-slate-500">
+                                <span>Manual OT only</span><span id="wc-ot-status" class="text-slate-300">REGULATION</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Organized match cards -->
+                    <div class="xl:col-span-8">
+                        <div class="flex items-center justify-between mb-3">
+                            <div>
+                                <h3 class="font-orbitron font-black text-xl text-white uppercase">Quarter-Final Match List</h3>
+                                <p class="text-xs text-slate-500">Each matchup is separated and synced with the World Cup bracket.</p>
+                            </div>
+                            <div class="flex flex-wrap gap-2">
+                                <button onclick="addWorldCupMatch()" class="px-3 py-2 bg-cyan-950/80 hover:bg-cyan-900 border border-cyan-500/30 rounded-lg text-cyan-300 text-xs font-bold"><i class="fa-solid fa-plus mr-1"></i>ADD MATCH</button>
+                                <button onclick="autoSeedWorldCup()" class="px-3 py-2 bg-purple-950/70 hover:bg-purple-900 border border-purple-500/30 rounded-lg text-purple-300 text-xs font-bold"><i class="fa-solid fa-shuffle mr-1"></i>AUTO SEED</button>
+                            </div>
+                        </div>
+                        <div id="wc-match-organizer-grid" class="grid grid-cols-1 md:grid-cols-2 gap-4"></div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -746,6 +936,15 @@
         </div>
     </div>
 
+    <!-- WORLD CUP HQ: MANUAL OVERTIME 1-SECOND SPLASH -->
+    <div id="wc-overtime-overlay" class="fixed inset-0 z-[70] hidden bg-red-950/92 backdrop-blur-xl flex items-center justify-center pointer-events-none">
+        <div class="wc-ot-banner text-center px-10 py-8 rounded-3xl border-2 border-red-400/60 bg-slate-950/80 shadow-2xl shadow-red-900/50">
+            <div class="font-orbitron font-black text-2xl md:text-4xl text-red-300 tracking-[.25em] uppercase">OVERTIME</div>
+            <div class="font-orbitron font-black text-7xl md:text-9xl text-white mt-2">1</div>
+            <div class="text-xs md:text-sm text-red-200 font-bold uppercase tracking-widest mt-2">Golden Goal • World Cup HQ</div>
+        </div>
+    </div>
+
     <!-- FACTORY RESET MODAL -->
     <div id="factory-reset-modal" class="fixed inset-0 z-50 hidden bg-slate-950/90 backdrop-blur-md flex items-center justify-center p-4">
         <div class="glass-panel max-w-md w-full p-6 rounded-2xl space-y-4 border border-red-500/50 text-center">
@@ -768,7 +967,8 @@
             logo: 'Logo_onlyNBG.png',
             sfxStart: 'Start countdown.mp3',
             sfxGoal: 'GOAL!.mp3',
-            sfxFinal: 'FinalXovertime.mp3'
+            sfxFinal: 'FinalXovertime.mp3',
+            fifaSong: 'FIFASONG.mp3'
         };
 
         const MUSIC_PLAYLIST = [
@@ -818,18 +1018,18 @@
 
         /* LEAGUE STANDINGS DATA */
         const DEFAULT_STANDINGS = [
-            { rank: 1, name: 'KARMINE CORP', matches: 6, wins: 5, losses: 1, gf: 22, ga: 10, pts: 15 },
-            { rank: 2, name: 'TEAM VITALITY', matches: 6, wins: 4, losses: 2, gf: 19, ga: 12, pts: 12 },
-            { rank: 3, name: 'G2 ESPORTS', matches: 6, wins: 4, losses: 2, gf: 17, ga: 11, pts: 12 },
-            { rank: 4, name: 'FURIA ESPORTS', matches: 6, wins: 3, losses: 3, gf: 14, ga: 15, pts: 9 },
-            { rank: 5, name: 'GENTLE MATES', matches: 6, wins: 2, losses: 4, gf: 11, ga: 18, pts: 6 },
-            { rank: 6, name: 'BAMBAM 2V2 DUO', matches: 6, wins: 2, losses: 4, gf: 9, ga: 16, pts: 6 },
-            { rank: 7, name: 'SOLAR ECLIPSE', matches: 6, wins: 3, losses: 3, gf: 13, ga: 14, pts: 9 },
-            { rank: 8, name: 'QUANTUM DRIFT', matches: 6, wins: 2, losses: 4, gf: 10, ga: 15, pts: 6 },
-            { rank: 9, name: 'VALKYRIE APEX', matches: 6, wins: 2, losses: 4, gf: 8, ga: 19, pts: 3 },
-            { rank: 10, name: 'OZONE BOOSTERS', matches: 6, wins: 1, losses: 5, gf: 7, ga: 20, pts: 3 },
-            { rank: 11, name: 'OVERDRIVE REAPERS', matches: 6, wins: 0, losses: 6, gf: 5, ga: 22, pts: 0 },
-            { rank: 12, name: 'GHOST RECTIFIER', matches: 6, wins: 0, losses: 6, gf: 4, ga: 24, pts: 0 }
+            { teamId: 1, name: 'KARMINE CORP', matches: 6, wins: 5, losses: 1, gf: 22, ga: 10, pts: 15 },
+            { teamId: 2, name: 'TEAM VITALITY', matches: 6, wins: 4, losses: 2, gf: 19, ga: 12, pts: 12 },
+            { teamId: 3, name: 'G2 ESPORTS', matches: 6, wins: 4, losses: 2, gf: 17, ga: 11, pts: 12 },
+            { teamId: 4, name: 'FURIA ESPORTS', matches: 6, wins: 3, losses: 3, gf: 14, ga: 15, pts: 9 },
+            { teamId: 5, name: 'GENTLE MATES', matches: 6, wins: 2, losses: 4, gf: 11, ga: 18, pts: 6 },
+            { teamId: 6, name: 'BAMBAM 2V2 DUO', matches: 6, wins: 2, losses: 4, gf: 9, ga: 16, pts: 6 },
+            { teamId: 7, name: 'SOLAR ECLIPSE', matches: 6, wins: 3, losses: 3, gf: 13, ga: 14, pts: 9 },
+            { teamId: 8, name: 'QUANTUM DRIFT', matches: 6, wins: 2, losses: 4, gf: 10, ga: 15, pts: 6 },
+            { teamId: 9, name: 'VALKYRIE APEX', matches: 6, wins: 2, losses: 4, gf: 8, ga: 19, pts: 3 },
+            { teamId: 10, name: 'OZONE BOOSTERS', matches: 6, wins: 1, losses: 5, gf: 7, ga: 20, pts: 3 },
+            { teamId: 11, name: 'OVERDRIVE REAPERS', matches: 6, wins: 0, losses: 6, gf: 5, ga: 22, pts: 0 },
+            { teamId: 12, name: 'GHOST RECTIFIER', matches: 6, wins: 0, losses: 6, gf: 4, ga: 24, pts: 0 }
         ];
         let standingsData = JSON.parse(JSON.stringify(DEFAULT_STANDINGS));
 
@@ -843,6 +1043,23 @@
             sf2_s1: 0, sf2_s2: 0,
             gf_s1: 0, gf_s2: 0
         };
+
+        /* WORLD CUP HQ ADD-ON STATE (kept separate from the main arena timer) */
+        let worldCupState = {
+            liveMatchId: 'qf1',
+            timerSeconds: 300,
+            timerRunning: false,
+            isOvertime: false,
+            overtimeSeconds: 30,
+            matchNotes: { qf1:'', qf2:'', qf3:'', qf4:'' },
+            matchTimes: { qf1:'', qf2:'', qf3:'', qf4:'' },
+            teamPhotos: {},
+            extraMatches: []
+        };
+        let worldCupTimerInterval = null;
+        let worldCupFifaAudio = null;
+        let worldCupFadeTimer = null;
+
 
         /* SAFE AUDIO PLAYBACK HELPER */
         const audioCache = {};
@@ -873,6 +1090,9 @@
             if (activeBtn) {
                 activeBtn.classList.add('bg-gradient-to-r', 'from-cyan-500', 'to-blue-600', 'text-white', 'shadow-lg');
             }
+
+            if (tabId === 'worldcup') renderWorldCupHQ();
+            if (tabId === 'bracket') renderWorldCupBracketUI();
 
             const bgContainer = document.getElementById('global-app-bg');
             if (tabId === 'arena') {
@@ -1120,10 +1340,38 @@
             return t ? t.name : 'UNKNOWN TEAM';
         }
 
+        function getTeamLogo(teamId) {
+            const t = teams.find(x => x.id === parseInt(teamId));
+            return t ? t.logo : 'Logo_onlyNBG.png';
+        }
+
+        function syncStandingsWithTeams() {
+            teams.forEach(t => {
+                let s = standingsData.find(x => x.teamId === t.id || x.name.toUpperCase() === t.name.toUpperCase());
+                if (!s) {
+                    standingsData.push({
+                        teamId: t.id,
+                        name: t.name,
+                        matches: 0,
+                        wins: 0,
+                        losses: 0,
+                        gf: 0,
+                        ga: 0,
+                        pts: 0
+                    });
+                } else {
+                    s.teamId = t.id;
+                    s.name = t.name;
+                }
+            });
+        }
+
         function renderTeamsAndPlayers() {
+            syncStandingsWithTeams();
             renderTeamSelectDropdowns();
             renderTeamsGrid();
             renderPlayerCards();
+            renderStandings();
             renderWorldCupBracketUI();
         }
 
@@ -1231,6 +1479,7 @@
 
         function deleteTeam(id) {
             teams = teams.filter(t => t.id !== id);
+            standingsData = standingsData.filter(s => s.teamId !== id);
             renderTeamsAndPlayers();
             saveTournamentState();
         }
@@ -1349,7 +1598,6 @@
                 }
             });
 
-            // Set current values
             if (document.getElementById('qf1-t1')) document.getElementById('qf1-t1').value = bracketState.qf1_1;
             if (document.getElementById('qf1-t2')) document.getElementById('qf1-t2').value = bracketState.qf1_2;
             if (document.getElementById('qf2-t1')) document.getElementById('qf2-t1').value = bracketState.qf2_1;
@@ -1358,6 +1606,23 @@
             if (document.getElementById('qf3-t2')) document.getElementById('qf3-t2').value = bracketState.qf3_2;
             if (document.getElementById('qf4-t1')) document.getElementById('qf4-t1').value = bracketState.qf4_1;
             if (document.getElementById('qf4-t2')) document.getElementById('qf4-t2').value = bracketState.qf4_2;
+
+            if (document.getElementById('qf1-s1')) document.getElementById('qf1-s1').value = bracketState.qf1_s1;
+            if (document.getElementById('qf1-s2')) document.getElementById('qf1-s2').value = bracketState.qf1_s2;
+            if (document.getElementById('qf2-s1')) document.getElementById('qf2-s1').value = bracketState.qf2_s1;
+            if (document.getElementById('qf2-s2')) document.getElementById('qf2-s2').value = bracketState.qf2_s2;
+            if (document.getElementById('qf3-s1')) document.getElementById('qf3-s1').value = bracketState.qf3_s1;
+            if (document.getElementById('qf3-s2')) document.getElementById('qf3-s2').value = bracketState.qf3_s2;
+            if (document.getElementById('qf4-s1')) document.getElementById('qf4-s1').value = bracketState.qf4_s1;
+            if (document.getElementById('qf4-s2')) document.getElementById('qf4-s2').value = bracketState.qf4_s2;
+
+            if (document.getElementById('sf1-s1')) document.getElementById('sf1-s1').value = bracketState.sf1_s1;
+            if (document.getElementById('sf1-s2')) document.getElementById('sf1-s2').value = bracketState.sf1_s2;
+            if (document.getElementById('sf2-s1')) document.getElementById('sf2-s1').value = bracketState.sf2_s1;
+            if (document.getElementById('sf2-s2')) document.getElementById('sf2-s2').value = bracketState.sf2_s2;
+
+            if (document.getElementById('gf-s1')) document.getElementById('gf-s1').value = bracketState.gf_s1;
+            if (document.getElementById('gf-s2')) document.getElementById('gf-s2').value = bracketState.gf_s2;
 
             evaluateAllBracketStages();
         }
@@ -1397,34 +1662,97 @@
                 bracketState.gf_s1 = parseInt(document.getElementById('gf-s1').value) || 0;
                 bracketState.gf_s2 = parseInt(document.getElementById('gf-s2').value) || 0;
             }
+            ['qf1_s1','qf1_s2','qf2_s1','qf2_s2','qf3_s1','qf3_s2','qf4_s1','qf4_s2','sf1_s1','sf1_s2','sf2_s1','sf2_s2','gf_s1','gf_s2'].forEach(k => {
+                bracketState[k] = Math.max(0, Math.min(4, Number(bracketState[k]) || 0));
+            });
             evaluateAllBracketStages();
             saveTournamentState();
         }
 
+        function bracketSeriesWinner(team1Id, team2Id, s1, s2) {
+            // A team only officially advances after reaching 4 game wins.
+            if (s1 >= 4 && s1 > s2) return team1Id;
+            if (s2 >= 4 && s2 > s1) return team2Id;
+            return null;
+        }
+
+        function bracketCurrentLeader(team1Id, team2Id, s1, s2) {
+            // Visual helper for the next bracket stage. It shows the team
+            // currently leading the series even before the official first-to-4
+            // result is locked. The actual advancement still requires 4 wins.
+            if (!team1Id && !team2Id) return 'TBD';
+            if (team1Id && !team2Id) return getTeamName(team1Id);
+            if (team2Id && !team1Id) return getTeamName(team2Id);
+            if (s1 > s2) return getTeamName(team1Id);
+            if (s2 > s1) return getTeamName(team2Id);
+            return `${getTeamName(team1Id)} vs ${getTeamName(team2Id)}`;
+        }
+
+        function bracketStageLabel(winnerId, team1Id, team2Id, s1, s2, winnerPrefix) {
+            if (winnerId) return getTeamName(winnerId);
+            return bracketCurrentLeader(team1Id, team2Id, s1, s2);
+        }
+
+        // Returns the team currently leading a series, even before the official
+        // first-to-4 winner is locked. A tie intentionally returns null.
+        function bracketCurrentLeaderId(team1Id, team2Id, s1, s2) {
+            if (!team1Id && !team2Id) return null;
+            if (team1Id && !team2Id) return team1Id;
+            if (team2Id && !team1Id) return team2Id;
+            if (s1 > s2) return team1Id;
+            if (s2 > s1) return team2Id;
+            return null;
+        }
+
         function evaluateAllBracketStages() {
-            // QF Winners -> SF
-            const qf1Winner = bracketState.qf1_s1 >= bracketState.qf1_s2 ? bracketState.qf1_1 : bracketState.qf1_2;
-            const qf2Winner = bracketState.qf2_s1 >= bracketState.qf2_s2 ? bracketState.qf2_1 : bracketState.qf2_2;
-            const qf3Winner = bracketState.qf3_s1 >= bracketState.qf3_s2 ? bracketState.qf3_1 : bracketState.qf3_2;
-            const qf4Winner = bracketState.qf4_s1 >= bracketState.qf4_s2 ? bracketState.qf4_1 : bracketState.qf4_2;
+            const qf1Winner = bracketSeriesWinner(bracketState.qf1_1, bracketState.qf1_2, bracketState.qf1_s1, bracketState.qf1_s2);
+            const qf2Winner = bracketSeriesWinner(bracketState.qf2_1, bracketState.qf2_2, bracketState.qf2_s1, bracketState.qf2_s2);
+            const qf3Winner = bracketSeriesWinner(bracketState.qf3_1, bracketState.qf3_2, bracketState.qf3_s1, bracketState.qf3_s2);
+            const qf4Winner = bracketSeriesWinner(bracketState.qf4_1, bracketState.qf4_2, bracketState.qf4_s1, bracketState.qf4_s2);
 
-            if (document.getElementById('sf1-t1-name')) document.getElementById('sf1-t1-name').innerText = getTeamName(qf1Winner);
-            if (document.getElementById('sf1-t2-name')) document.getElementById('sf1-t2-name').innerText = getTeamName(qf2Winner);
-            if (document.getElementById('sf2-t1-name')) document.getElementById('sf2-t1-name').innerText = getTeamName(qf3Winner);
-            if (document.getElementById('sf2-t2-name')) document.getElementById('sf2-t2-name').innerText = getTeamName(qf4Winner);
+            const qf1Leader = qf1Winner || bracketCurrentLeaderId(bracketState.qf1_1, bracketState.qf1_2, bracketState.qf1_s1, bracketState.qf1_s2);
+            const qf2Leader = qf2Winner || bracketCurrentLeaderId(bracketState.qf2_1, bracketState.qf2_2, bracketState.qf2_s1, bracketState.qf2_s2);
+            const qf3Leader = qf3Winner || bracketCurrentLeaderId(bracketState.qf3_1, bracketState.qf3_2, bracketState.qf3_s1, bracketState.qf3_s2);
+            const qf4Leader = qf4Winner || bracketCurrentLeaderId(bracketState.qf4_1, bracketState.qf4_2, bracketState.qf4_s1, bracketState.qf4_s2);
 
-            // SF Winners -> GF
-            const sf1Winner = bracketState.sf1_s1 >= bracketState.sf1_s2 ? qf1Winner : qf2Winner;
-            const sf2Winner = bracketState.sf2_s1 >= bracketState.sf2_s2 ? qf3Winner : qf4Winner;
+            // The semifinal slots show the real team leading each QF instead of
+            // generic labels. Official advancement still requires 4 wins.
+            if (document.getElementById('sf1-t1-name')) document.getElementById('sf1-t1-name').innerText = qf1Leader ? getTeamName(qf1Leader) : bracketCurrentLeader(bracketState.qf1_1, bracketState.qf1_2, bracketState.qf1_s1, bracketState.qf1_s2);
+            if (document.getElementById('sf1-t2-name')) document.getElementById('sf1-t2-name').innerText = qf2Leader ? getTeamName(qf2Leader) : bracketCurrentLeader(bracketState.qf2_1, bracketState.qf2_2, bracketState.qf2_s1, bracketState.qf2_s2);
+            if (document.getElementById('sf2-t1-name')) document.getElementById('sf2-t1-name').innerText = qf3Leader ? getTeamName(qf3Leader) : bracketCurrentLeader(bracketState.qf3_1, bracketState.qf3_2, bracketState.qf3_s1, bracketState.qf3_s2);
+            if (document.getElementById('sf2-t2-name')) document.getElementById('sf2-t2-name').innerText = qf4Leader ? getTeamName(qf4Leader) : bracketCurrentLeader(bracketState.qf4_1, bracketState.qf4_2, bracketState.qf4_s1, bracketState.qf4_s2);
 
-            if (document.getElementById('gf-t1-name')) document.getElementById('gf-t1-name').innerText = getTeamName(sf1Winner);
-            if (document.getElementById('gf-t2-name')) document.getElementById('gf-t2-name').innerText = getTeamName(sf2Winner);
+            // Official semifinal winners require the corresponding QF winners.
+            const sf1Winner = (qf1Winner && qf2Winner) ? bracketSeriesWinner(qf1Winner, qf2Winner, bracketState.sf1_s1, bracketState.sf1_s2) : null;
+            const sf2Winner = (qf3Winner && qf4Winner) ? bracketSeriesWinner(qf3Winner, qf4Winner, bracketState.sf2_s1, bracketState.sf2_s2) : null;
 
-            // GF Winner -> Champ
-            const crownedId = bracketState.gf_s1 >= bracketState.gf_s2 ? sf1Winner : sf2Winner;
-            if (document.getElementById('crowned-champion-name')) {
-                document.getElementById('crowned-champion-name').innerText = getTeamName(crownedId);
+            // For the visual Grand Final bracket, use the current semifinal
+            // leaders as soon as they exist. This prevents the Grand Final from
+            // incorrectly staying on TBD while a semifinal is being played.
+            const sf1Leader = sf1Winner || bracketCurrentLeaderId(qf1Leader, qf2Leader, bracketState.sf1_s1, bracketState.sf1_s2);
+            const sf2Leader = sf2Winner || bracketCurrentLeaderId(qf3Leader, qf4Leader, bracketState.sf2_s1, bracketState.sf2_s2);
+
+            const sf1Display = sf1Leader ? getTeamName(sf1Leader) : (qf1Leader || qf2Leader ? bracketCurrentLeader(qf1Leader, qf2Leader, bracketState.sf1_s1, bracketState.sf1_s2) : 'TBD');
+            const sf2Display = sf2Leader ? getTeamName(sf2Leader) : (qf3Leader || qf4Leader ? bracketCurrentLeader(qf3Leader, qf4Leader, bracketState.sf2_s1, bracketState.sf2_s2) : 'TBD');
+            if (document.getElementById('gf-t1-name')) document.getElementById('gf-t1-name').innerText = sf1Display;
+            if (document.getElementById('gf-t2-name')) document.getElementById('gf-t2-name').innerText = sf2Display;
+
+            // Grand Final uses the actual two semifinal leaders. The name under
+            // the trophy is always the team with the most Grand Final game wins;
+            // reaching 4 makes that result official.
+            const crownedId = (sf1Winner && sf2Winner) ? bracketSeriesWinner(sf1Winner, sf2Winner, bracketState.gf_s1, bracketState.gf_s2) : null;
+            const gfLeaderId = crownedId || bracketCurrentLeaderId(sf1Leader, sf2Leader, bracketState.gf_s1, bracketState.gf_s2);
+            const gfLeaderDisplay = gfLeaderId
+                ? getTeamName(gfLeaderId)
+                : (sf1Leader || sf2Leader ? bracketCurrentLeader(sf1Leader, sf2Leader, bracketState.gf_s1, bracketState.gf_s2) : 'TBD');
+
+            if (document.getElementById('gf-leader-name')) {
+                document.getElementById('gf-leader-name').innerText = gfLeaderDisplay;
             }
+            if (document.getElementById('crowned-champion-name')) {
+                document.getElementById('crowned-champion-name').innerText = gfLeaderDisplay;
+            }
+            renderWorldCupHQ();
         }
 
         function resetBracketData() {
@@ -1439,11 +1767,10 @@
             saveTournamentState();
         }
 
-        /* LEAGUE STANDINGS LEADERBOARD ENGINE */
+        /* LEAGUE STANDINGS LEADERBOARD ENGINE WITH FULL MANUAL OVERRIDE */
         function renderStandings() {
             standingsData.sort((a, b) => b.pts - a.pts || (b.gf - b.ga) - (a.gf - a.ga));
-            standingsData.forEach((t, i) => t.rank = i + 1);
-
+            
             const leftBody = document.getElementById('standings-left-body');
             const rightBody = document.getElementById('standings-right-body');
 
@@ -1451,41 +1778,64 @@
                 const leftTeams = standingsData.slice(0, 6);
                 const rightTeams = standingsData.slice(6, 12);
 
-                leftBody.innerHTML = leftTeams.map(t => renderRowHTML(t)).join('');
-                rightBody.innerHTML = rightTeams.map(t => renderRowHTML(t)).join('');
+                leftBody.innerHTML = leftTeams.map((t, idx) => renderInteractiveRowHTML(t, idx + 1)).join('');
+                rightBody.innerHTML = rightTeams.map((t, idx) => renderInteractiveRowHTML(t, idx + 7)).join('');
             }
         }
 
-        function renderRowHTML(t) {
+        function renderInteractiveRowHTML(t, rank) {
             let rankBadge = 'text-slate-400';
-            if (t.rank === 1) rankBadge = 'text-yellow-400 font-extrabold glow-gold-text';
-            if (t.rank === 2) rankBadge = 'text-slate-200 font-bold';
-            if (t.rank === 3) rankBadge = 'text-amber-600 font-bold';
+            if (rank === 1) rankBadge = 'text-yellow-400 font-extrabold glow-gold-text';
+            if (rank === 2) rankBadge = 'text-slate-200 font-bold';
+            if (rank === 3) rankBadge = 'text-amber-600 font-bold';
 
-            const gd = t.gf - t.ga;
+            const logo = getTeamLogo(t.teamId);
 
             return `
                 <tr class="hover:bg-slate-900/50 transition">
-                    <td class="p-2.5 font-orbitron ${rankBadge}">#${t.rank}</td>
-                    <td class="p-2.5 font-bold text-white flex items-center gap-2">
-                        <img src="${ASSETS.logo}" onerror="this.src='Logo_onlyNBG.png'" class="h-4 w-auto inline-block">
-                        <span class="truncate max-w-[120px]">${t.name}</span>
+                    <td class="p-2 font-orbitron ${rankBadge}">#${rank}</td>
+                    <td class="p-2 font-bold text-white flex items-center gap-2">
+                        <img src="${logo}" onerror="this.src='Logo_onlyNBG.png'" class="h-4 w-auto inline-block">
+                        <span class="truncate max-w-[100px]">${t.name}</span>
                     </td>
-                    <td class="p-2.5 text-center text-slate-300">${t.matches}</td>
-                    <td class="p-2.5 text-center text-emerald-400">${t.wins}</td>
-                    <td class="p-2.5 text-center text-red-400">${t.losses}</td>
-                    <td class="p-2.5 text-center ${gd >= 0 ? 'text-cyan-400' : 'text-orange-400'}">${gd > 0 ? '+'+gd : gd}</td>
-                    <td class="p-2.5 text-right font-orbitron font-extrabold text-cyan-300">${t.pts}</td>
+                    <td class="p-1 text-center">
+                        <input type="number" min="0" value="${t.matches}" onchange="updateStandingStat(${t.teamId || `'${t.name}'`}, 'matches', this.value)" class="w-10 text-center bg-slate-950 border border-slate-700 rounded text-slate-300 font-bold">
+                    </td>
+                    <td class="p-1 text-center">
+                        <input type="number" min="0" value="${t.wins}" onchange="updateStandingStat(${t.teamId || `'${t.name}'`}, 'wins', this.value)" class="w-10 text-center bg-slate-950 border border-slate-700 rounded text-emerald-400 font-bold">
+                    </td>
+                    <td class="p-1 text-center">
+                        <input type="number" min="0" value="${t.losses}" onchange="updateStandingStat(${t.teamId || `'${t.name}'`}, 'losses', this.value)" class="w-10 text-center bg-slate-950 border border-slate-700 rounded text-red-400 font-bold">
+                    </td>
+                    <td class="p-1 text-center">
+                        <input type="number" min="0" value="${t.gf}" onchange="updateStandingStat(${t.teamId || `'${t.name}'`}, 'gf', this.value)" class="w-10 text-center bg-slate-950 border border-slate-700 rounded text-cyan-400 font-bold">
+                    </td>
+                    <td class="p-1 text-center">
+                        <input type="number" min="0" value="${t.ga}" onchange="updateStandingStat(${t.teamId || `'${t.name}'`}, 'ga', this.value)" class="w-10 text-center bg-slate-950 border border-slate-700 rounded text-orange-400 font-bold">
+                    </td>
+                    <td class="p-1 text-center">
+                        <input type="number" min="0" value="${t.pts}" onchange="updateStandingStat(${t.teamId || `'${t.name}'`}, 'pts', this.value)" class="w-12 text-center bg-cyan-950 border border-cyan-500/50 rounded font-orbitron font-extrabold text-cyan-300">
+                    </td>
                 </tr>
             `;
+        }
+
+        function updateStandingStat(teamKey, stat, value) {
+            let team = standingsData.find(s => s.teamId === teamKey || s.name === teamKey);
+            if (team) {
+                team[stat] = parseInt(value) || 0;
+                renderStandings();
+                saveTournamentState();
+                logTelemetry(`[LEAGUE] Updated ${team.name} ${stat.toUpperCase()} to ${value}`);
+            }
         }
 
         function updateStandingsFromMatch() {
             const blueName = getTeamName(state.blueTeamId);
             const orangeName = getTeamName(state.orangeTeamId);
 
-            const blue = standingsData.find(s => s.name.toUpperCase() === blueName.toUpperCase());
-            const orange = standingsData.find(s => s.name.toUpperCase() === orangeName.toUpperCase());
+            let blue = standingsData.find(s => s.teamId === state.blueTeamId || s.name.toUpperCase() === blueName.toUpperCase());
+            let orange = standingsData.find(s => s.teamId === state.orangeTeamId || s.name.toUpperCase() === orangeName.toUpperCase());
 
             if (blue && orange) {
                 blue.matches++;
@@ -1542,10 +1892,19 @@
             document.getElementById('score-blue').innerText = '0';
             document.getElementById('score-orange').innerText = '0';
 
+            worldCupState = {
+                liveMatchId: 'qf1', timerSeconds: 300, timerRunning: false, isOvertime:false, overtimeSeconds:30,
+                matchNotes: { qf1:'', qf2:'', qf3:'', qf4:'' }, matchTimes: { qf1:'', qf2:'', qf3:'', qf4:'' },
+                teamPhotos: {}, extraMatches: []
+            };
+            clearInterval(worldCupTimerInterval);
+            worldCupTimerInterval = null;
+            pauseWorldCupFifaSong();
+            if (worldCupFifaAudio) { try { worldCupFifaAudio.currentTime=0; worldCupFifaAudio.volume=.9; } catch(e){} }
             resetBracketData();
             resetMatchTimer();
             renderTeamsAndPlayers();
-            renderStandings();
+            renderWorldCupHQ();
             closeFactoryResetModal();
             logTelemetry('[SYSTEM RESET] Factory reset complete. All state refreshed.');
         }
@@ -1605,6 +1964,202 @@
             }
         }
 
+
+        /* ==================== WORLD CUP HQ ENGINE ==================== */
+        const WORLD_CUP_MATCH_IDS = ['qf1','qf2','qf3','qf4'];
+
+        function allWorldCupMatchIds() {
+            return WORLD_CUP_MATCH_IDS.concat((worldCupState.extraMatches || []).map(m => m.id));
+        }
+
+        function getWorldCupMatch(matchId) {
+            if (WORLD_CUP_MATCH_IDS.includes(matchId)) {
+                const [t1,t2] = [bracketState[`${matchId}_1`], bracketState[`${matchId}_2`]];
+                return { id:matchId, title:`Quarter-Final ${WORLD_CUP_MATCH_IDS.indexOf(matchId)+1}`, t1, t2, s1:Number(bracketState[`${matchId}_s1`])||0, s2:Number(bracketState[`${matchId}_s2`])||0, time:worldCupState.matchTimes[matchId]||'', note:worldCupState.matchNotes[matchId]||'', bracket:true };
+            }
+            return (worldCupState.extraMatches || []).find(m => m.id === matchId) || null;
+        }
+
+        function getBracketMatchTeams(matchId) {
+            const m=getWorldCupMatch(matchId); return m ? [m.t1,m.t2] : [null,null];
+        }
+        function getBracketSeriesScore(matchId) {
+            const m=getWorldCupMatch(matchId); return m ? [Number(m.s1)||0,Number(m.s2)||0] : [0,0];
+        }
+
+        function renderSeriesPips(targetId, wins) {
+            const el = document.getElementById(targetId); if (!el) return;
+            el.innerHTML = Array.from({length:4}, (_,i) => `<span class="wc-series-pip ${i < wins ? 'on' : ''}"></span>`).join('');
+        }
+
+        function teamPhotoFor(teamId) {
+            return worldCupState.teamPhotos?.[String(teamId)] || teams.find(t=>t.id===Number(teamId))?.logo || ASSETS.logo;
+        }
+
+        function renderWorldCupHQ() {
+            const grid = document.getElementById('wc-match-organizer-grid');
+            const liveSelect = document.getElementById('wc-live-match-select');
+            if (!grid || !liveSelect) return;
+            const ids=allWorldCupMatchIds();
+            const teamOptions = teams.map(t => `<option value="${t.id}">${t.name}</option>`).join('');
+            grid.innerHTML = ids.map((matchId, idx) => {
+                const m=getWorldCupMatch(matchId); if(!m) return '';
+                const t1=m.t1,t2=m.t2,s1=m.s1,s2=m.s2;
+                const status = s1 >= 4 || s2 >= 4 ? 'SERIES COMPLETE' : `GAME WINS ${s1} - ${s2}`;
+                const title=m.title || `Match ${idx+1}`;
+                return `
+                    <div class="wc-match-card rounded-2xl p-4 transition-all ${worldCupState.liveMatchId===matchId?'ring-1 ring-yellow-400/60':''}">
+                        <div class="flex items-center justify-between gap-3 mb-3">
+                            <div class="flex items-center gap-2 min-w-0">
+                                <span class="w-8 h-8 rounded-lg bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center font-orbitron font-black text-cyan-300">${idx+1}</span>
+                                <div class="min-w-0"><div class="font-orbitron font-black text-white text-sm truncate">${title}</div><div class="text-[10px] text-yellow-300 font-bold">${status} • FIRST TO 4</div></div>
+                            </div>
+                            <div class="flex gap-1">
+                                <button onclick="selectWorldCupLiveMatch('${matchId}')" class="px-2.5 py-1.5 rounded-lg bg-slate-950 border border-slate-700 hover:border-yellow-400 text-[10px] font-bold text-slate-300">SET LIVE</button>
+                                ${m.bracket?'':`<button onclick="removeWorldCupMatch('${matchId}')" class="px-2 py-1.5 rounded-lg bg-red-950/50 border border-red-500/30 text-red-300 text-[10px]">×</button>`}
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-[1fr_auto_1fr] items-center gap-2">
+                            <div class="min-w-0">
+                                <select onchange="setWorldCupOpponent('${matchId}',1,this.value)" class="bg-slate-950 border border-cyan-500/25 rounded-lg px-2 py-2 text-cyan-200 text-xs font-bold min-w-0 w-full">${teamOptions}</select>
+                                <div class="flex items-center gap-2 mt-2"><img class="wc-photo-preview" src="${teamPhotoFor(t1)}" onerror="this.src='${ASSETS.logo}'"><label class="wc-photo-btn flex-1 text-center px-2 py-2 rounded-lg bg-slate-950 border border-slate-700 text-[10px] text-cyan-300 font-bold">📷 PHOTO<input type="file" accept="image/*" class="hidden" onchange="setWorldCupTeamPhoto(${t1||0},this)"></label></div>
+                            </div>
+                            <span class="font-orbitron font-black text-slate-500 text-xs">VS</span>
+                            <div class="min-w-0">
+                                <select onchange="setWorldCupOpponent('${matchId}',2,this.value)" class="bg-slate-950 border border-orange-500/25 rounded-lg px-2 py-2 text-orange-200 text-xs font-bold min-w-0 w-full">${teamOptions}</select>
+                                <div class="flex items-center gap-2 mt-2"><label class="wc-photo-btn flex-1 text-center px-2 py-2 rounded-lg bg-slate-950 border border-slate-700 text-[10px] text-orange-300 font-bold">📷 PHOTO<input type="file" accept="image/*" class="hidden" onchange="setWorldCupTeamPhoto(${t2||0},this)"></label><img class="wc-photo-preview" src="${teamPhotoFor(t2)}" onerror="this.src='${ASSETS.logo}'"></div>
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-2 gap-2 mt-3">
+                            <input value="${m.time||''}" oninput="setWorldCupMeta('${matchId}','time',this.value)" placeholder="Time / date e.g. Fri 8:00 PM" class="bg-slate-950 border border-slate-800 rounded-lg px-2.5 py-2 text-xs text-slate-300 focus:border-cyan-500 focus:outline-none">
+                            <input value="${m.note||''}" oninput="setWorldCupMeta('${matchId}','note',this.value)" placeholder="Group / note / stream" class="bg-slate-950 border border-slate-800 rounded-lg px-2.5 py-2 text-xs text-slate-300 focus:border-cyan-500 focus:outline-none">
+                        </div>
+                    </div>`;
+            }).join('');
+            ids.forEach((matchId,i)=>{ const card=grid.children[i]; const m=getWorldCupMatch(matchId); if(card&&m){const ss=card.querySelectorAll('select'); if(ss[0])ss[0].value=m.t1; if(ss[1])ss[1].value=m.t2;} });
+            liveSelect.innerHTML=ids.map((id,i)=>{const m=getWorldCupMatch(id);return `<option value="${id}">${m.title||`Match ${i+1}`}: ${getTeamName(m.t1)} vs ${getTeamName(m.t2)}</option>`}).join('');
+            if(ids.includes(worldCupState.liveMatchId)) liveSelect.value=worldCupState.liveMatchId; else {worldCupState.liveMatchId=ids[0]||'qf1'; liveSelect.value=worldCupState.liveMatchId;}
+            renderWorldCupBroadcastRibbon(); updateWorldCupTimerDisplays();
+        }
+
+        function setWorldCupOpponent(matchId, side, teamId) {
+            const id=Number(teamId);
+            if(WORLD_CUP_MATCH_IDS.includes(matchId)) {
+                bracketState[`${matchId}_${side}`]=id; bracketState[`${matchId}_s1`]=0; bracketState[`${matchId}_s2`]=0;
+                renderWorldCupBracketUI();
+            } else {
+                const m=getWorldCupMatch(matchId); if(!m)return; m[`t${side}`]=id; m.s1=0; m.s2=0;
+            }
+            renderWorldCupHQ(); saveTournamentState();
+        }
+
+        function setWorldCupMeta(matchId,type,value){
+            if(WORLD_CUP_MATCH_IDS.includes(matchId)) { if(type==='time')worldCupState.matchTimes[matchId]=value; if(type==='note')worldCupState.matchNotes[matchId]=value; }
+            else { const m=getWorldCupMatch(matchId); if(m){if(type==='time')m.time=value;if(type==='note')m.note=value;} }
+            saveTournamentState();
+        }
+
+        function selectWorldCupLiveMatch(matchId){ if(!allWorldCupMatchIds().includes(matchId))return; worldCupState.liveMatchId=matchId; renderWorldCupHQ(); saveTournamentState(); }
+
+        function adjustWorldCupSeries(side,delta){
+            const id=worldCupState.liveMatchId,m=getWorldCupMatch(id); if(!m)return;
+            const key=side==='left'?'s1':'s2',otherKey=side==='left'?'s2':'s1'; const other=Number(m[otherKey])||0;
+            let current=Number(m[key])||0; if(other>=4&&delta>0)return; current=Math.max(0,Math.min(4,current+delta)); m[key]=current;
+            if(WORLD_CUP_MATCH_IDS.includes(id)) bracketState[`${id}_${key}`]=current;
+            renderWorldCupBracketUI(); renderWorldCupHQ(); saveTournamentState();
+        }
+
+        function renderWorldCupBroadcastRibbon(){
+            const m=getWorldCupMatch(worldCupState.liveMatchId); if(!m)return;
+            const left=teams.find(t=>t.id===Number(m.t1)),right=teams.find(t=>t.id===Number(m.t2));
+            const ln=document.getElementById('wc-left-name'),rn=document.getElementById('wc-right-name'); if(ln)ln.innerText=left?.name||'TEAM 1'; if(rn)rn.innerText=right?.name||'TEAM 2';
+            const li=document.getElementById('wc-left-logo'),ri=document.getElementById('wc-right-logo'); if(li)li.src=teamPhotoFor(m.t1); if(ri)ri.src=teamPhotoFor(m.t2);
+            renderSeriesPips('wc-left-pips',m.s1); renderSeriesPips('wc-right-pips',m.s2);
+            const label=document.getElementById('wc-series-label'); if(label)label.innerText=m.s1>=4?`${left?.name||'LEFT'} WINS SERIES 4-${m.s2}`:m.s2>=4?`${right?.name||'RIGHT'} WINS SERIES 4-${m.s1}`:'BEST OF 7 • FIRST TO 4';
+        }
+
+        function updateWorldCupTimerDisplays(){
+            const value=formatTime(worldCupState.timerSeconds); const a=document.getElementById('wc-timer-display'),b=document.getElementById('wc-big-timer'); if(a)a.innerText=value;if(b)b.innerText=value;
+            const btn=document.getElementById('wc-timer-start-btn'); if(btn)btn.innerHTML=worldCupState.timerRunning?'<i class="fa-solid fa-pause mr-1"></i>PAUSE':'<i class="fa-solid fa-play mr-1"></i>START';
+            const ot=document.getElementById('wc-ot-status'); if(ot)ot.innerText=worldCupState.isOvertime?'OVERTIME':'REGULATION';
+        }
+
+        function ensureWorldCupFifaAudio(){
+            if(!worldCupFifaAudio){worldCupFifaAudio=new Audio(ASSETS.fifaSong);worldCupFifaAudio.loop=false;worldCupFifaAudio.volume=0.9;}
+            return worldCupFifaAudio;
+        }
+        function startWorldCupFifaSong(){
+            try{clearTimeout(worldCupFadeTimer);const a=ensureWorldCupFifaAudio();a.pause();a.currentTime=0;a.volume=0.9;a.play().catch(()=>{});}catch(e){}
+        }
+        function pauseWorldCupFifaSong(){try{if(worldCupFifaAudio)worldCupFifaAudio.pause();}catch(e){}}
+        function fadeOutWorldCupFifaSong(){
+            try{if(!worldCupFifaAudio)return; const a=worldCupFifaAudio; clearTimeout(worldCupFadeTimer); let v=a.volume; const step=()=>{v-=0.08;if(v<=0.02){a.volume=0;a.pause();a.currentTime=0;return;}a.volume=v;worldCupFadeTimer=setTimeout(step,100);};step();}catch(e){}
+        }
+
+        function toggleWorldCupTimer(){
+            if(worldCupState.timerRunning){ worldCupState.timerRunning=false; clearInterval(worldCupTimerInterval);worldCupTimerInterval=null;pauseWorldCupFifaSong();updateWorldCupTimerDisplays();saveTournamentState();return; }
+            if(worldCupState.timerSeconds<=0) return alert('Regulation time is over. Use TRIGGER OVERTIME if you want overtime.');
+            worldCupState.timerRunning=true; startWorldCupFifaSong(); updateWorldCupTimerDisplays();
+            worldCupTimerInterval=setInterval(()=>{
+                if(worldCupState.timerSeconds>0){worldCupState.timerSeconds--;updateWorldCupTimerDisplays();}
+                if(worldCupState.timerSeconds<=0){
+                    worldCupState.timerRunning=false;clearInterval(worldCupTimerInterval);worldCupTimerInterval=null;fadeOutWorldCupFifaSong();playSFX('sfxFinal');updateWorldCupTimerDisplays();saveTournamentState();
+                }
+            },1000);
+        }
+
+        function triggerWorldCupOvertime(){
+            if(worldCupState.timerRunning){return alert('Pause the World Cup timer first.');}
+            worldCupState.isOvertime=true; worldCupState.timerSeconds=0;
+            updateWorldCupTimerDisplays();
+            const ov=document.getElementById('wc-overtime-overlay'); if(ov){ov.classList.remove('hidden');setTimeout(()=>{ov.classList.add('hidden');worldCupState.timerSeconds=Math.max(1,Number(worldCupState.overtimeSeconds)||30);worldCupState.timerRunning=false;updateWorldCupTimerDisplays();toggleWorldCupTimer();},1000);}
+            else {worldCupState.timerSeconds=Math.max(1,Number(worldCupState.overtimeSeconds)||30);toggleWorldCupTimer();}
+            saveTournamentState();
+        }
+        function setWorldCupOvertimeLength(){
+            const val=prompt('Overtime length in seconds:',String(worldCupState.overtimeSeconds||30)); if(val===null)return; const n=Number(val); if(!Number.isFinite(n)||n<1||n>600)return alert('Enter 1–600 seconds.'); worldCupState.overtimeSeconds=Math.round(n);saveTournamentState();
+        }
+
+        function resetWorldCupTimer(){clearInterval(worldCupTimerInterval);worldCupTimerInterval=null;worldCupState.timerRunning=false;worldCupState.isOvertime=false;worldCupState.timerSeconds=300;pauseWorldCupFifaSong();if(worldCupFifaAudio){try{worldCupFifaAudio.currentTime=0;worldCupFifaAudio.volume=.9;}catch(e){}}updateWorldCupTimerDisplays();saveTournamentState();}
+        function setWorldCupTimerPrompt(){const input=prompt('World Cup timer length in minutes:',String(Math.max(1,Math.round(worldCupState.timerSeconds/60))));if(input===null)return;const min=Number(input);if(!Number.isFinite(min)||min<=0||min>120)return alert('Enter a valid timer from 1 to 120 minutes.');clearInterval(worldCupTimerInterval);worldCupTimerInterval=null;worldCupState.timerRunning=false;worldCupState.isOvertime=false;worldCupState.timerSeconds=Math.round(min*60);pauseWorldCupFifaSong();updateWorldCupTimerDisplays();saveTournamentState();}
+
+        function addWorldCupMatch(){
+            const id='custom_'+Date.now();
+            const next=worldCupState.extraMatches.length+1;
+            const m={id,title:`Custom Match ${next}`,t1:teams[0]?.id||1,t2:teams[1]?.id||2,s1:0,s2:0,time:'',note:'',bracket:false};
+            worldCupState.extraMatches.push(m);worldCupState.liveMatchId=id;renderWorldCupHQ();saveTournamentState();
+        }
+        function removeWorldCupMatch(id){worldCupState.extraMatches=worldCupState.extraMatches.filter(m=>m.id!==id);if(worldCupState.liveMatchId===id)worldCupState.liveMatchId='qf1';renderWorldCupHQ();saveTournamentState();}
+
+        async function setWorldCupTeamPhoto(teamId,input){
+            const file=input?.files?.[0]; if(!file||!teamId)return;
+            try{
+                const data=await compressWorldCupImage(file,320,0.78); worldCupState.teamPhotos[String(teamId)]=data; renderWorldCupHQ(); renderWorldCupBroadcastRibbon(); saveTournamentState();
+            }catch(e){alert('Could not load that image. Try another JPG/PNG.');}
+        }
+        function compressWorldCupImage(file,maxSide,quality){
+            return new Promise((resolve,reject)=>{const img=new Image();const url=URL.createObjectURL(file);img.onload=()=>{const scale=Math.min(1,maxSide/Math.max(img.width,img.height));const c=document.createElement('canvas');c.width=Math.max(1,Math.round(img.width*scale));c.height=Math.max(1,Math.round(img.height*scale));const ctx=c.getContext('2d');ctx.drawImage(img,0,0,c.width,c.height);URL.revokeObjectURL(url);resolve(c.toDataURL('image/jpeg',quality));};img.onerror=()=>{URL.revokeObjectURL(url);reject(new Error('image'));};img.src=url;});
+        }
+
+        function autoSeedWorldCup(){
+            if(teams.length<2)return alert('Create at least 2 teams first.'); const pool=teams.map(t=>t.id);for(let i=pool.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[pool[i],pool[j]]=[pool[j],pool[i]];}
+            WORLD_CUP_MATCH_IDS.forEach((id,idx)=>{bracketState[`${id}_1`]=pool[(idx*2)%pool.length];bracketState[`${id}_2`]=pool[(idx*2+1)%pool.length];bracketState[`${id}_s1`]=0;bracketState[`${id}_s2`]=0;});renderWorldCupBracketUI();renderWorldCupHQ();saveTournamentState();
+        }
+        function saveWorldCupPlan(){saveTournamentState();const btn=document.activeElement;if(btn&&btn.tagName==='BUTTON'){const old=btn.innerHTML;btn.innerHTML='<i class="fa-solid fa-check mr-2"></i>SAVED';setTimeout(()=>btn.innerHTML=old,1000);}}
+
+        function exportWorldCupSchedulePNG(){
+            const ids=allWorldCupMatchIds(); const cols=2,rows=Math.ceil(ids.length/cols),cardW=720,cardH=315,gapX=45,gapY=35,startX=60,startY=185;
+            const canvas=document.createElement('canvas');canvas.width=1545;canvas.height=startY+rows*(cardH+gapY)+90;const ctx=canvas.getContext('2d');
+            const grd=ctx.createLinearGradient(0,0,canvas.width,canvas.height);grd.addColorStop(0,'#030712');grd.addColorStop(.55,'#071426');grd.addColorStop(1,'#120a02');ctx.fillStyle=grd;ctx.fillRect(0,0,canvas.width,canvas.height);
+            ctx.fillStyle='#00f0ff';ctx.fillRect(0,0,canvas.width,8);ctx.fillStyle='#ffb700';ctx.fillRect(0,canvas.height-8,canvas.width,8);
+            ctx.fillStyle='#fff';ctx.font='900 52px Orbitron,Arial';ctx.fillText('FIFA WORLD CUP • MATCH SCRIPT',60,82);ctx.fillStyle='#94a3b8';ctx.font='700 23px Rajdhani,Arial';ctx.fillText('ARENA CENTRALE • FIRST TO 4 GAME WINS • BEST OF 7',62,122);
+            ids.forEach((id,idx)=>{const m=getWorldCupMatch(id);const col=idx%cols,row=Math.floor(idx/cols),x=startX+col*(cardW+gapX),y=startY+row*(cardH+gapY);ctx.fillStyle='rgba(8,15,28,.96)';roundRect(ctx,x,y,cardW,cardH,24,true,false);ctx.strokeStyle=id===worldCupState.liveMatchId?'#ffb700':'#263244';ctx.lineWidth=3;roundRect(ctx,x,y,cardW,cardH,24,false,true);ctx.fillStyle='#00f0ff';ctx.font='800 22px Orbitron,Arial';ctx.fillText((m.title||`MATCH ${idx+1}`).toUpperCase(),x+28,y+44);ctx.fillStyle='#fff';ctx.font='900 34px Orbitron,Arial';ctx.fillText(shortCanvasText(getTeamName(m.t1),25),x+28,y+105);ctx.fillStyle='#64748b';ctx.font='900 23px Orbitron,Arial';ctx.fillText('VS',x+335,y+105);ctx.fillStyle='#ff8a24';ctx.font='900 34px Orbitron,Arial';ctx.fillText(shortCanvasText(getTeamName(m.t2),25),x+390,y+105);ctx.fillStyle='#ffb700';ctx.font='900 48px Orbitron,Arial';ctx.fillText(`${m.s1}  —  ${m.s2}`,x+270,y+175);ctx.fillStyle='#94a3b8';ctx.font='700 21px Rajdhani,Arial';ctx.fillText(shortCanvasText(m.time||'TIME: TBD',42),x+28,y+235);ctx.fillText(shortCanvasText(m.note||'NOTE: —',42),x+28,y+272);ctx.fillStyle='#64748b';ctx.font='700 17px Orbitron,Arial';ctx.fillText('FIRST TEAM TO 4 WINS ADVANCES',x+380,y+270);});
+            ctx.fillStyle='#fff';ctx.font='800 20px Orbitron,Arial';ctx.fillText(`LIVE: ${worldCupState.liveMatchId.toUpperCase()} • ${worldCupState.isOvertime?'OVERTIME':'REGULATION'} • ${formatTime(worldCupState.timerSeconds)}`,60,canvas.height-28);
+            const link=document.createElement('a');link.download='world-cup-match-script.png';link.href=canvas.toDataURL('image/png');link.click();
+        }
+        function roundRect(ctx,x,y,w,h,r,fill,stroke){if(w<2*r)r=w/2;if(h<2*r)r=h/2;ctx.beginPath();ctx.moveTo(x+r,y);ctx.arcTo(x+w,y,x+w,y+h,r);ctx.arcTo(x+w,y+h,x,y+h,r);ctx.arcTo(x,y+h,x,y,r);ctx.arcTo(x,y,x+w,y,r);ctx.closePath();if(fill)ctx.fill();if(stroke)ctx.stroke();}
+        function shortCanvasText(str,max){str=String(str||'TBD');return str.length>max?str.slice(0,max-1)+'…':str;}
+
         /* PERSISTENCE STATE ENGINE */
         function saveTournamentState() {
             const saveData = {
@@ -1612,7 +2167,8 @@
                 teams: teams,
                 players: players,
                 standings: standingsData,
-                bracket: bracketState
+                bracket: bracketState,
+                worldCup: worldCupState
             };
             localStorage.setItem('RL_APEX_PRO_TOURNAMENT_DATA', JSON.stringify(saveData));
         }
@@ -1634,6 +2190,7 @@
                     if (parsed.players) players = parsed.players;
                     if (parsed.standings) standingsData = parsed.standings;
                     if (parsed.bracket) bracketState = parsed.bracket;
+                    if (parsed.worldCup) worldCupState = { ...worldCupState, ...parsed.worldCup, timerRunning: false, extraMatches: parsed.worldCup.extraMatches || [], teamPhotos: parsed.worldCup.teamPhotos || {} };
                 } catch(e) {
                     console.warn("Could not parse saved state:", e);
                 }
@@ -1645,7 +2202,8 @@
             loadTournamentState();
             updateTimerDisplay();
             renderTeamsAndPlayers();
-            renderStandings();
+            renderWorldCupBracketUI();
+            renderWorldCupHQ();
             logTelemetry('[SYSTEM] Arena Centrale Apex Pro Engine Ready.');
         };
     </script>
